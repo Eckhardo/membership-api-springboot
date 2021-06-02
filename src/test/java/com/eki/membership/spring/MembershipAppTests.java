@@ -1,10 +1,10 @@
-package com.eki.shipment;
+package com.eki.membership.spring;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MembershipApiSpringbootApplicationTests {
+class MembershipAppTests {
 
 	@Test
 	void contextLoads() {
