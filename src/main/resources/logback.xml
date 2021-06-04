@@ -1,6 +1,7 @@
 <configuration>
 
-	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
 			</pattern>
@@ -16,7 +17,8 @@
 
 	<!-- our service -->
 	<logger name="com.eki.membership" level="INFO" />
-	<logger name="com.eki.membership.persistence.setup" level="DEBUG" /> <!-- to follow if setup is being executed -->
+	<logger name="com.eki.membership.persistence.setup"
+		level="DEBUG" /> <!-- to follow if setup is being executed -->
 
 	<root level="INFO">
 		<appender-ref ref="STDOUT" />
