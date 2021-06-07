@@ -36,7 +36,6 @@ public class User implements IEntity, IDto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "PRINCIPAL_ID")
 	private Long id;
 
 	@Column(unique = true, nullable = false)
