@@ -69,7 +69,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (10000,'Lutterothstrasse 89',NULL,2007,'Hamburg','taerna@gmx.de','Eckhard',_binary '',_binary '','Kirschning','','0160 97023201','Eckhardo',20255);
+INSERT INTO `user` VALUES (10000,'Lutterothstrasse 89',NULL,2007,'Hamburg','taerna@gmx.de','Eckhard',1,0,'Kirschning','','0160 97023201','Eckhardo',20255);
 INSERT INTO `user` VALUES (10001,'Luruper Weg 4',NULL,2007,'Hamburg','maikeli.de','Maike',1,0,'Littkemann','','0160 97023201','Maikeli',20257);
 
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
@@ -84,4 +84,64 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-07 18:16:39
+--
+-- Table structure for table `event`
+--
+
+DROP TABLE IF EXISTS `event`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `event` (
+  `id` bigint(20) NOT NULL,
+  `comments` varchar(255) DEFAULT NULL,
+  `event_name` varchar(255) NOT NULL,
+  `event_short` varchar(3) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_6dto2vsd75dbbc0fjgng303lv` (`event_short`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `event`
+--
+
+LOCK TABLES `event` WRITE;
+/*!40000 ALTER TABLE `event` DISABLE KEYS */;
+INSERT INTO `event` VALUES (20000,'Forellen','Anangeln','ANA'),(20001,'Zander','Gemeinschaftsangeln','GEA'),(20002,'Saiblinge','Abangeln','ABA');
+/*!40000 ALTER TABLE `event` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+--
+-- Table structure for table `season`
+--
+
+DROP TABLE IF EXISTS `season`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `season` (
+  `id` bigint(20) NOT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `season_date` date DEFAULT NULL,
+  `season_name` varchar(255) NOT NULL,
+  `season_year` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `season`
+--
+
+LOCK TABLES `season` WRITE;
+/*!40000 ALTER TABLE `season` DISABLE KEYS */;
+INSERT INTO `membership`.`season` (`id`, `is_active`, `season_name`, `season_year`, `season_date` ) VALUES ('50001', 1, 'Saison 2021', 2021,null);
+INSERT INTO `membership`.`season` (`id`, `is_active`, `season_name`, `season_year`, `season_date` ) VALUES ('50002', 0, 'Saison 2022', 2022,null);
+
+/*!40000 ALTER TABLE `season` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+

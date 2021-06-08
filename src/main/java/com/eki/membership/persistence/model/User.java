@@ -21,6 +21,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+/**
+ * @author eckhard kirschning
+ *
+ */
+
 @Getter
 @Setter
 @NoArgsConstructor
