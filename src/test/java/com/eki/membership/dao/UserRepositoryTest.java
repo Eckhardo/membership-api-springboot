@@ -33,13 +33,16 @@ public class UserRepositoryTest extends AbstractRepositoryTest<User, Long> {
 		newUser.setFirstName("Adolf");
 
 		// given
-		userRepository.save(newUser);
+		getApi().save(newUser);
 
 		// when
-		User found = userRepository.findByUserName(newUser.getUserName());
+		User found = getApi().findByUserName(newUser.getUserName());
 
 		// then
 		assertThat(found.getUserName()).isEqualTo(newUser.getUserName());
+	//	getApi().delete(newUser);
+	
+
 	}
 
 	@Override
