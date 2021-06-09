@@ -11,7 +11,6 @@ import com.eki.membership.setup.MyApplicationContextInitializer;
 @Import({ // @formatter:off
     MembershipContextConfig.class,
     MembershipPersistenceJpaConfig.class,
-    MembershipWebConfig.class,
     MembershipServiceConfig.class,
     MyApplicationContextInitializer.class
  
