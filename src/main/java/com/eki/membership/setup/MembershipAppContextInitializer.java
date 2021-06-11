@@ -11,13 +11,14 @@ import org.springframework.core.io.support.ResourcePropertySource;
 
 import com.google.common.base.Preconditions;
 
-public class MyApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
-    private final Logger logger = LoggerFactory.getLogger(MyApplicationContextInitializer.class);
+public class MembershipAppContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+    private final Logger logger = LoggerFactory.getLogger(MembershipAppContextInitializer.class);
 
     private static final String ENV_TARGET = "envTarget";
 
-    public MyApplicationContextInitializer() {
+    public MembershipAppContextInitializer() {
         super();
+        logger.info("Start MembershipAppContextInitializer.................");
     }
 
     //

@@ -94,10 +94,10 @@ DROP TABLE IF EXISTS `event`;
 CREATE TABLE `event` (
   `id` bigint(20) NOT NULL,
   `comments` varchar(255) DEFAULT NULL,
-  `event_name` varchar(255) NOT NULL,
-  `event_short` varchar(3) NOT NULL,
+  `eventName` varchar(255) NOT NULL,
+  `eventShort` varchar(3) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_6dto2vsd75dbbc0fjgng303lv` (`event_short`)
+  UNIQUE KEY `UK_6dto2vsd75dbbc0fjgng303lv` (`eventShort`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -121,10 +121,10 @@ DROP TABLE IF EXISTS `season`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `season` (
   `id` bigint(20) NOT NULL,
-  `is_active` bit(1) DEFAULT NULL,
-  `season_date` date DEFAULT NULL,
-  `season_name` varchar(255) NOT NULL,
-  `season_year` int(11) NOT NULL,
+  `isActive` bit(1) DEFAULT NULL,
+  `seasonDate` date DEFAULT NULL,
+  `seasonName` varchar(255) NOT NULL,
+  `seasonYear` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -135,8 +135,8 @@ CREATE TABLE `season` (
 
 LOCK TABLES `season` WRITE;
 /*!40000 ALTER TABLE `season` DISABLE KEYS */;
-INSERT INTO `membership`.`season` (`id`, `is_active`, `season_name`, `season_year`, `season_date` ) VALUES ('50001', 1, 'Saison 2021', 2021,null);
-INSERT INTO `membership`.`season` (`id`, `is_active`, `season_name`, `season_year`, `season_date` ) VALUES ('50002', 0, 'Saison 2022', 2022,null);
+INSERT INTO `membership`.`season` (`id`, `isActive`, `seasonName`, `seasonYear`, `seasonDate` ) VALUES ('50001', 1, 'Saison 2021', 2021,null);
+INSERT INTO `membership`.`season` (`id`, `isActive`, `seasonName`, `seasonYear`, `seasonDate` ) VALUES ('50002', 0, 'Saison 2022', 2022,null);
 
 /*!40000 ALTER TABLE `season` ENABLE KEYS */;
 UNLOCK TABLES;

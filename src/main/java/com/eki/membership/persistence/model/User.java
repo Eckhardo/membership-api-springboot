@@ -1,7 +1,6 @@
 package com.eki.membership.persistence.model;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -17,11 +16,6 @@ import javax.validation.constraints.Size;
 
 import com.eki.membership.persistence.interfaces.IDto;
 import com.eki.membership.persistence.interfaces.IEntity;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 
 /**

@@ -5,19 +5,15 @@ package com.eki.membership.dao;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.time.LocalDate;
-
-import javax.transaction.Transactional;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.eki.membership.persistence.dao.IUserJpaRepository;
 import com.eki.membership.persistence.model.User;
-import com.eki.membership.persistence.model.User.UserBuilder;
+import com.eki.membership.testdata.EntityFactory;
 
 /**
- * @author eckha
+ * @author eckhard kirschning
  *
  */
 
@@ -40,21 +36,13 @@ public class UserRepositoryTest extends AbstractRepositoryTest<User, Long> {
 
 		// then
 		assertThat(found.getUserName()).isEqualTo(newUser.getUserName());
-	//	getApi().delete(newUser);
-	
 
 	}
 
 	@Override
 	protected User createNewEntity() {
-		UserBuilder builder = new User.UserBuilder();
-		builder.setUserName("Otto").setFirstName("Otto").setLastName("Bismarck").setCity("Hamburg")
-				.setAddress("Luruper Weg 4");
-		builder.setZip(20257).setAdmissionYear(2021).setAdmissionDate(LocalDate.now()).setMobil("0156234234");
-		builder.setPhone("040 4913656").setEmail("otto@gmx.de").setIsActive(true).setIsAdmin(false);
 
-		return builder.build();
-
+		return EntityFactory.createUser();
 	}
 
 	@Override
