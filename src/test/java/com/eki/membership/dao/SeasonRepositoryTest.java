@@ -18,7 +18,7 @@ import com.eki.membership.persistence.model.User;
 import com.eki.membership.testdata.EntityFactory;
 
 /**
- * @author eckha
+ * @author eckhard kirschning
  *
  */
 class SeasonRepositoryTest extends AbstractRepositoryTest<Season, Long> {
