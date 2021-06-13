@@ -71,6 +71,8 @@ LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES (10000,'Lutterothstrasse 89',NULL,2007,'Hamburg','taerna@gmx.de','Eckhard',1,0,'Kirschning','','0160 97023201','Eckhardo',20255);
 INSERT INTO `user` VALUES (10001,'Luruper Weg 4',NULL,2007,'Hamburg','maikeli.de','Maike',1,0,'Littkemann','','0160 97023201','Maikeli',20257);
+INSERT INTO `user` VALUES (10002,'Marktstrasse 10',NULL,1980,'Quickborn','hauser@freenet.de','Guenther',1,0,'Hauser','','0160 11223344','Guenther',25451);
+INSERT INTO `user` VALUES (10003,'Glashütter Strasse  4',NULL,2000,'Norderstedt','cp.david@gmx.de','Claus',1,0,'David','','0160 9333331','Claus',25451);
 
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -167,7 +169,10 @@ CREATE TABLE `season_user` (
 
 LOCK TABLES `season_user` WRITE;
 /*!40000 ALTER TABLE `season_user` DISABLE KEYS */;
-INSERT INTO `season_user` VALUES (9, 1, 0,'Schriftführer',50001,10000);
+INSERT INTO `season_user` VALUES (8000, 1, 0,'Schriftführer',50001,10000);
+INSERT INTO `season_user` VALUES (8001, 1, 0,'Kassenwart',50001,10001);
+INSERT INTO `season_user` VALUES (8002, 1, 0,'1. Vorsitzender',50001,10002);
+INSERT INTO `season_user` VALUES (8003, 1, 0,null ,50001,10003);
 /*!40000 ALTER TABLE `season_user` ENABLE KEYS */;
 UNLOCK TABLES;
 

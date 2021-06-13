@@ -37,16 +37,14 @@ public class SeasonUserRepositoryTest extends AbstractRepositoryTest<SeasonUser,
 	private ISeasonJpaRepository seasonRepo;
 
 	@Test
-	public void whenFindByUserName_thenReturnUser() {
-		SeasonUser newSeasonUser = createNewEntity();
-
+	public void whenFindBySeasonYear_thenReturnAllRegisteredUsers() {
 		// given
-		SeasonUser user = getApi().save(newSeasonUser);
+		List<User> seasonUsers = getApi().findAllUsersBySeasonYear(2021);
 
 		// when
-		List<SeasonUser> found = getApi().findAll();
+	
 		// then
-		assertThat(found.get(0).getPositionRole()).isEqualTo(newSeasonUser.getPositionRole());
+		assertThat(seasonUsers.size()).isEqualTo(4);
 
 	}
 
