@@ -21,7 +21,6 @@ import com.eki.membership.persistence.interfaces.IEntity;
  *
  */
 
-
 @Entity
 @Table(name = "EVENT")
 public class Event implements IEntity, IDto {
@@ -143,11 +142,11 @@ public class Event implements IEntity, IDto {
 			this.comments = this.comments != null ? ", " + comment : comment;
 			return this;
 		}
-		
-		public Event build () {
-			
+
+		public Event build() {
+
 			return new Event(event_name, event_short, comments);
-			
+
 		}
 	}
 }

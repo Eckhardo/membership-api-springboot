@@ -4,10 +4,10 @@
 package com.eki.membership.persistence.interfaces;
 
 /**
- * @author eckha
+ * @author eckhard kirschning
  *
  */
 public interface IByIdApi<T extends IWithId> {
 
-	   T findOneById(final Long id);
+	T findOneById(final Long id);
 }

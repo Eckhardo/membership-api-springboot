@@ -12,56 +12,57 @@ import org.springframework.core.io.support.ResourcePropertySource;
 import com.google.common.base.Preconditions;
 
 public class MembershipAppContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
-    private final Logger logger = LoggerFactory.getLogger(MembershipAppContextInitializer.class);
+	private final Logger logger = LoggerFactory.getLogger(MembershipAppContextInitializer.class);
 
-    private static final String ENV_TARGET = "envTarget";
+	private static final String ENV_TARGET = "envTarget";
 
-    public MembershipAppContextInitializer() {
-        super();
-        logger.info("Start MembershipAppContextInitializer.................");
-    }
+	public MembershipAppContextInitializer() {
+		super();
+		logger.info("Start MembershipAppContextInitializer.................");
+	}
 
-    //
+	//
 
-    /**
-     * Sets the active profile.
-     */
-    @Override
-    public void initialize(final ConfigurableApplicationContext applicationContext) {
-        final ConfigurableEnvironment environment = applicationContext.getEnvironment();
-        String envTarget = null;
-        try {
-            envTarget = getEnvTarget(environment);
-            environment.getPropertySources()
-                .addFirst(new ResourcePropertySource("classpath:env-" + envTarget + ".properties"));
+	/**
+	 * Sets the active profile.
+	 */
+	@Override
+	public void initialize(final ConfigurableApplicationContext applicationContext) {
+		final ConfigurableEnvironment environment = applicationContext.getEnvironment();
+		String envTarget = null;
+		try {
+			envTarget = getEnvTarget(environment);
+			environment.getPropertySources()
+					.addFirst(new ResourcePropertySource("classpath:env-" + envTarget + ".properties"));
 
-            final String activeProfiles = environment.getProperty("spring.profiles.active");
-            if (activeProfiles != null) {
-                environment.setActiveProfiles(activeProfiles.split(","));
-            }
-        } catch (final IOException ioEx) {
-            if (envTarget != null) {
-                logger.warn("Didn't find env-" + envTarget + ".properties in classpath so not loading it in the AppContextInitialized", ioEx);
-            }
-        }
-    }
+			final String activeProfiles = environment.getProperty("spring.profiles.active");
+			if (activeProfiles != null) {
+				environment.setActiveProfiles(activeProfiles.split(","));
+			}
+		} catch (final IOException ioEx) {
+			if (envTarget != null) {
+				logger.warn("Didn't find env-" + envTarget
+						+ ".properties in classpath so not loading it in the AppContextInitialized", ioEx);
+			}
+		}
+	}
 
-    /**
-     * @param environment
-     * @return The env target variable.
-     */
-    private String getEnvTarget(final ConfigurableEnvironment environment) {
-        String target = environment.getProperty(ENV_TARGET);
-        if (target == null) {
-            logger.warn("Didn't find a value for {} in the current Environment!", ENV_TARGET);
-        }
+	/**
+	 * @param environment
+	 * @return The env target variable.
+	 */
+	private String getEnvTarget(final ConfigurableEnvironment environment) {
+		String target = environment.getProperty(ENV_TARGET);
+		if (target == null) {
+			logger.warn("Didn't find a value for {} in the current Environment!", ENV_TARGET);
+		}
 
-        if (target == null) {
-            logger.info("Didn't find a value for {} in the current Environment!, using the default `dev`", ENV_TARGET);
-            target = "dev";
-        }
+		if (target == null) {
+			logger.info("Didn't find a value for {} in the current Environment!, using the default `dev`", ENV_TARGET);
+			target = "dev";
+		}
 
-        return Preconditions.checkNotNull(target);
-    }
+		return Preconditions.checkNotNull(target);
+	}
 
 }

@@ -17,12 +17,10 @@ import javax.validation.constraints.Size;
 import com.eki.membership.persistence.interfaces.IDto;
 import com.eki.membership.persistence.interfaces.IEntity;
 
-
 /**
  * @author eckhard kirschning
  *
  */
-
 
 @Entity
 @Table(name = "USER")
@@ -84,9 +82,6 @@ public class User implements IEntity, IDto {
 
 	@Column()
 	private boolean isAdmin;
-	
-	
-	
 
 	public User() {
 		super();
@@ -123,9 +118,6 @@ public class User implements IEntity, IDto {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	
-
 
 	public String getUserName() {
 		return userName;
@@ -258,8 +250,6 @@ public class User implements IEntity, IDto {
 				&& Objects.equals(phone, other.phone) && Objects.equals(userName, other.userName) && zip == other.zip;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", user_name=" + userName + ", first_name=" + firstName + ", last_name=" + lastName
@@ -268,80 +258,90 @@ public class User implements IEntity, IDto {
 				+ ", is_active=" + isActive + ", is_admin=" + isAdmin + "]";
 	}
 
-
-
 	public static class UserBuilder {
-		
-	    private String user_name;
-	    private String first_name;
-	    private String last_name;
-	    private String city;
-	    private String address;
-	    private int zip;
-	    private String mobil;  
-	    private String phone;
-	    private String email;
-	    private int admission_year;
-	    private LocalDate admission_date;
-	    private boolean is_active;
-	    private boolean is_admin;
-	    public UserBuilder setUserName(String user_name) {
-	        this.user_name = user_name;
-	        return this;
-	    }
-	    public UserBuilder setFirstName(String first_name) {
-	        this.first_name = first_name;
-	        return this;
-	    }
-	    public UserBuilder setLastName(String last_name) {
-	        this.last_name = last_name;
-	        return this;
-	    }
-	
-	    
-	    public UserBuilder setCity(String city) {
-			this.city = city;
-		    return this;
+
+		private String user_name;
+		private String first_name;
+		private String last_name;
+		private String city;
+		private String address;
+		private int zip;
+		private String mobil;
+		private String phone;
+		private String email;
+		private int admission_year;
+		private LocalDate admission_date;
+		private boolean is_active;
+		private boolean is_admin;
+
+		public UserBuilder setUserName(String user_name) {
+			this.user_name = user_name;
+			return this;
 		}
+
+		public UserBuilder setFirstName(String first_name) {
+			this.first_name = first_name;
+			return this;
+		}
+
+		public UserBuilder setLastName(String last_name) {
+			this.last_name = last_name;
+			return this;
+		}
+
+		public UserBuilder setCity(String city) {
+			this.city = city;
+			return this;
+		}
+
 		public UserBuilder setAddress(String address) {
 			this.address = address;
-		    return this;
+			return this;
 		}
+
 		public UserBuilder setZip(int zip) {
 			this.zip = zip;
-		    return this;
+			return this;
 		}
+
 		public UserBuilder setMobil(String mobil) {
 			this.mobil = mobil;
-		    return this;
+			return this;
 		}
+
 		public UserBuilder setPhone(String phone) {
 			this.phone = phone;
-		    return this;
+			return this;
 		}
+
 		public UserBuilder setEmail(String email) {
 			this.email = email;
-		    return this;
+			return this;
 		}
+
 		public UserBuilder setAdmissionYear(int admission_year) {
 			this.admission_year = admission_year;
-		    return this;
+			return this;
 		}
+
 		public UserBuilder setAdmissionDate(LocalDate admission_date) {
 			this.admission_date = admission_date;
-		    return this;
+			return this;
 		}
+
 		public UserBuilder setIsActive(boolean is_active) {
 			this.is_active = is_active;
-		    return this;
+			return this;
 		}
+
 		public UserBuilder setIsAdmin(boolean is_admin) {
 			this.is_admin = is_admin;
-		    return this;
+			return this;
 		}
+
 		public User build() {
-	        return new User( user_name,  first_name,last_name, city, address, zip, mobil, phone, email,
-	    			 admission_year, admission_date, is_active, is_admin);
-	    }
+			return new User(user_name, first_name, last_name, city, address, zip, mobil, phone, email, admission_year,
+					admission_date, is_active, is_admin);
+		}
 	}
 }

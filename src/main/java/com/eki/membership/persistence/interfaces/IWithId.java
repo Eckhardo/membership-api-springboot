@@ -2,8 +2,8 @@ package com.eki.membership.persistence.interfaces;
 
 public interface IWithId {
 
-    Long getId();
+	Long getId();
 
-    void setId(final Long id);
+	void setId(final Long id);
 
 }

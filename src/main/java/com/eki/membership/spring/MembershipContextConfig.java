@@ -10,20 +10,21 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 @Configuration
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class MembershipContextConfig {
-private static final Logger logger = LoggerFactory.getLogger(MembershipContextConfig.class);  
+	private static final Logger logger = LoggerFactory.getLogger(MembershipContextConfig.class);
+
 	public MembershipContextConfig() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-    // beans
 
-    @Bean
+	// beans
+
+	@Bean
 	public static PropertySourcesPlaceholderConfigurer properties() {
-    	logger.info("Init PropertySourcesPlaceholderConfigurer.............. ");
-    	
-    	return new PropertySourcesPlaceholderConfigurer();
-		
+		logger.info("Init PropertySourcesPlaceholderConfigurer.............. ");
+
+		return new PropertySourcesPlaceholderConfigurer();
+
 	}
 
 }

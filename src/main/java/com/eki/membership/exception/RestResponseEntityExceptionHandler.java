@@ -15,7 +15,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;;
 
 /**
- * @author eckha
+ * @author eckhard kirschning
  *
  */
 @ControllerAdvice
@@ -37,15 +37,16 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 				request);
 
 	}
-	
-    @ExceptionHandler({ NullPointerException.class, IllegalArgumentException.class, IllegalStateException.class })
-    protected ResponseEntity<Object> handleInternal(final RuntimeException ex, final WebRequest request) {
-        logger.error("500 Status Code", ex);
-        final String bodyOfResponse = "Error in Membership Webapi:";
-        return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
-    }
-    
- //---------------- private----------------------------------------   
+
+	@ExceptionHandler({ NullPointerException.class, IllegalArgumentException.class, IllegalStateException.class })
+	protected ResponseEntity<Object> handleInternal(final RuntimeException ex, final WebRequest request) {
+		logger.error("500 Status Code", ex);
+		final String bodyOfResponse = "Error in Membership Webapi:";
+		return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR,
+				request);
+	}
+
+	// ---------------- private----------------------------------------
 	private final ApiError message(final HttpStatus httpStatus, final Exception ex) {
 		final String message = ex.getMessage() == null ? ex.getClass().getSimpleName() : ex.getMessage();
 		final String devMessage = ExceptionUtils.getRootCauseMessage(ex);

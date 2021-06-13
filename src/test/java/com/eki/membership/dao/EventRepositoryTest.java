@@ -3,17 +3,14 @@
  */
 package com.eki.membership.dao;
 
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import com.eki.membership.persistence.dao.IEventJpaRepository;
 import com.eki.membership.persistence.model.Event;
 import com.eki.membership.testdata.EntityFactory;
-
 
 /**
  * @author eckhard kirschning

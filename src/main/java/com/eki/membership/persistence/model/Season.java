@@ -4,7 +4,6 @@
 package com.eki.membership.persistence.model;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -25,33 +24,29 @@ import com.eki.membership.persistence.interfaces.IEntity;
 
 @Entity
 @Table(name = "SEASON")
-public class Season   implements IEntity, IDto  {
+public class Season implements IEntity, IDto {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7467681945161675216L;
 
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	
+
 	@Column(unique = true, nullable = false)
 	private String seasonName;
 
 	@Column()
 	private boolean isActive;
-	
+
 	@Column()
 	@NotNull
 	private int seasonYear;
 
 	@Column()
 	private LocalDate seasonDate;
-
-
 
 	public Season() {
 		super();
@@ -140,35 +135,36 @@ public class Season   implements IEntity, IDto  {
 		return builder.toString();
 	}
 
-	public static class SeasonBuilder{
+	public static class SeasonBuilder {
 		private String season_name;
 		private boolean is_active;
 		private int season_year;
 		private LocalDate season_date;
 
+		public SeasonBuilder setName(String name) {
+			this.season_name = name;
+			return this;
+		}
 
-	public SeasonBuilder setName(String name) {
-		this.season_name=name;
-		return this;
-	}
-	public SeasonBuilder setYear(int year) {
-		this.season_year=year;
-		return this;
-	}
-	
-	public SeasonBuilder setDate(LocalDate date) {
-		this.season_date=date;
-		return this;
-	}
-	public SeasonBuilder setIsActive(boolean isActive) {
-		this.is_active=isActive;
-		return this;
-	}
-	
-	public Season build() {
-		
-		return new Season(season_name, is_active, season_year, season_date);
-	}
-		
+		public SeasonBuilder setYear(int year) {
+			this.season_year = year;
+			return this;
+		}
+
+		public SeasonBuilder setDate(LocalDate date) {
+			this.season_date = date;
+			return this;
+		}
+
+		public SeasonBuilder setIsActive(boolean isActive) {
+			this.is_active = isActive;
+			return this;
+		}
+
+		public Season build() {
+
+			return new Season(season_name, is_active, season_year, season_date);
+		}
+
 	}
 }

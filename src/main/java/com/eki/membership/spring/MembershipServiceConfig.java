@@ -10,6 +10,6 @@ public class MembershipServiceConfig {
 	public MembershipServiceConfig() {
 		super();
 	}
-    // beans	
+	// beans
 
 }

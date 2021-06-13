@@ -3,25 +3,19 @@
  */
 package com.eki.membership.dao;
 
-
 import org.junit.jupiter.api.Assertions;
-import javax.transaction.Transactional;
-
-
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.TestPropertySource;
-
+import org.springframework.transaction.annotation.Transactional;
 
 import com.eki.membership.persistence.interfaces.IEntity;
 import com.eki.membership.service.StartupLoggingComponent;
-import com.eki.membership.spring.MembershipApp;
 import com.eki.membership.spring.MembershipPersistenceJpaConfig;
 
-import org.junit.jupiter.api.Test;
 /**
  * @author eckhard kirschning
  *
@@ -29,7 +23,7 @@ import org.junit.jupiter.api.Test;
  *
  *
  */
-@SpringBootTest(classes = { MembershipPersistenceJpaConfig.class, StartupLoggingComponent.class})
+@SpringBootTest(classes = { MembershipPersistenceJpaConfig.class, StartupLoggingComponent.class })
 @Transactional
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 

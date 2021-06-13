@@ -4,17 +4,14 @@
 package com.eki.membership.dao;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.eki.membership.persistence.dao.ISeasonJpaRepository;
 import com.eki.membership.persistence.model.Season;
-import com.eki.membership.persistence.model.User;
 import com.eki.membership.testdata.EntityFactory;
 
 /**
@@ -22,18 +19,15 @@ import com.eki.membership.testdata.EntityFactory;
  *
  */
 class SeasonRepositoryTest extends AbstractRepositoryTest<Season, Long> {
-	
-	
+
 	@Autowired
-	
+
 	private ISeasonJpaRepository repository;
 
-	
 	@BeforeEach
 	void setUp() throws Exception {
 		System.out.println("set up....");
 	}
-
 
 	@AfterEach
 	void tearDown() throws Exception {
@@ -55,13 +49,11 @@ class SeasonRepositoryTest extends AbstractRepositoryTest<Season, Long> {
 
 	}
 
-
 	@Override
 	protected Season createNewEntity() {
-	return EntityFactory.createSeason();
+		return EntityFactory.createSeason();
 	}
 
-	
 	@Override
 	protected ISeasonJpaRepository getApi() {
 		return repository;

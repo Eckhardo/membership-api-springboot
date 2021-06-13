@@ -7,8 +7,10 @@ import java.time.LocalDate;
 
 import com.eki.membership.persistence.model.Event;
 import com.eki.membership.persistence.model.Event.EventBuilder;
-import com.eki.membership.persistence.model.Season.SeasonBuilder;
 import com.eki.membership.persistence.model.Season;
+import com.eki.membership.persistence.model.Season.SeasonBuilder;
+import com.eki.membership.persistence.model.SeasonUser;
+import com.eki.membership.persistence.model.SeasonUser.SeasonUserBuilder;
 import com.eki.membership.persistence.model.User;
 import com.eki.membership.persistence.model.User.UserBuilder;
 
@@ -45,4 +47,10 @@ public class EntityFactory {
 		return builder.build();
 	}
 
+	public static SeasonUser createSeasonUser(User user, Season season) {
+		SeasonUserBuilder builder = new SeasonUser.SeasonUserBuilder();
+		builder.setIsActive(true).setIsFeesPaid(true).setPositionRole("Schriftführer").setUser(user).setSeason(season);
+		;
+		return builder.build();
+	}
 }

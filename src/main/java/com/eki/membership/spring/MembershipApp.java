@@ -1,6 +1,5 @@
 package com.eki.membership.spring;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -12,9 +11,7 @@ public class MembershipApp {
 	@SuppressWarnings("rawtypes")
 
 	private final static Class[] CONFIGS = { // @formatter:off
-			MembershipContextConfig.class, 
-			MembershipPersistenceJpaConfig.class, 
-			MembershipServiceConfig.class,
+			MembershipContextConfig.class, MembershipPersistenceJpaConfig.class, MembershipServiceConfig.class,
 			MembershipApp.class
 
 	}; // @formatter:on
@@ -24,6 +21,5 @@ public class MembershipApp {
 		springApplication.addInitializers(new MembershipAppContextInitializer());
 		springApplication.run(args);
 	}
-
 
 }

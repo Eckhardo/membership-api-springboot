@@ -26,62 +26,64 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @PropertySource({ "classpath:persistence-${persistenceTarget:mysql}.properties" })
 @EnableJpaRepositories(basePackages = "com.eki.membership.persistence.dao")
 public class MembershipPersistenceJpaConfig {
-	private  final Logger logger = LoggerFactory.getLogger(MembershipPersistenceJpaConfig.class);  
+	private final Logger logger = LoggerFactory.getLogger(MembershipPersistenceJpaConfig.class);
 
-	
-	  @Autowired
-	    private Environment env;
+	@Autowired
+	private Environment env;
 
-	    public MembershipPersistenceJpaConfig() {
-	        super();
-	    }
+	public MembershipPersistenceJpaConfig() {
+		super();
+	}
 
-	    // beans
+	// beans
 
-	    @Bean
-	    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-	    	
-	    	logger.info("Initialize JPA & data source");
-	        final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-	        em.setDataSource(dataSource());
-	        em.setPackagesToScan(new String[] { "com.eki.membership" });
-	        final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-	        em.setJpaVendorAdapter(vendorAdapter);
-	        em.setJpaProperties(additionalProperties());
-	        return em;
-	    }
-	    @Bean
-	    public DataSource dataSource() {
-	        final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-	        dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
-	        dataSource.setUrl(env.getProperty("jdbc.url"));
-	        dataSource.setUsername(env.getProperty("jdbc.username"));
-	        dataSource.setPassword(env.getProperty("jdbc.password"));
-	        return dataSource;
-	    }
+	@Bean
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 
-	    @Bean
-	    public JpaTransactionManager transactionManager() {
-	        final JpaTransactionManager transactionManager = new JpaTransactionManager();
-	        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
-	        return transactionManager;
-	    }
+		logger.info("Initialize JPA & data source");
+		final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+		em.setDataSource(dataSource());
+		em.setPackagesToScan(new String[] { "com.eki.membership" });
+		final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+		em.setJpaVendorAdapter(vendorAdapter);
+		em.setJpaProperties(additionalProperties());
+		return em;
+	}
 
-	    @Bean
-	    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
-	        return new PersistenceExceptionTranslationPostProcessor();
-	    }
+	@Bean
+	public DataSource dataSource() {
+		final DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
+		dataSource.setUrl(env.getProperty("jdbc.url"));
+		dataSource.setUsername(env.getProperty("jdbc.username"));
+		dataSource.setPassword(env.getProperty("jdbc.password"));
+		return dataSource;
+	}
 
-	    //
+	@Bean
+	public JpaTransactionManager transactionManager() {
+		final JpaTransactionManager transactionManager = new JpaTransactionManager();
+		transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+		return transactionManager;
+	}
 
-	    final Properties additionalProperties() {
-	        final Properties hibernateProperties = new Properties();
-	        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto", "create-drop"));
-	        hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
+	@Bean
+	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
+		return new PersistenceExceptionTranslationPostProcessor();
+	}
 
-	        // setProperty("hibernate.hbm2ddl.auto", hibernateHbm2ddlAuto);
-	        // setProperty("hibernate.ejb.naming_strategy", org.hibernate.cfg.ImprovedNamingStrategy.class.getName());
-	        return hibernateProperties;
-	    }
+	//
+
+	final Properties additionalProperties() {
+		final Properties hibernateProperties = new Properties();
+		hibernateProperties.setProperty("hibernate.hbm2ddl.auto",
+				env.getProperty("hibernate.hbm2ddl.auto", "create-drop"));
+		hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
+
+		// setProperty("hibernate.hbm2ddl.auto", hibernateHbm2ddlAuto);
+		// setProperty("hibernate.ejb.naming_strategy",
+		// org.hibernate.cfg.ImprovedNamingStrategy.class.getName());
+		return hibernateProperties;
+	}
 
 }
