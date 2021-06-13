@@ -97,7 +97,7 @@ CREATE TABLE `event` (
   `eventName` varchar(255) NOT NULL,
   `eventShort` varchar(3) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_6dto2vsd75dbbc0fjgng303lv` (`eventShort`)
+  UNIQUE KEY `UK_event_short` (`eventShort`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -142,6 +142,32 @@ INSERT INTO `membership`.`season` (`id`, `isActive`, `seasonName`, `seasonYear`,
 UNLOCK TABLES;
 
 --
--- Table structure for table `user`
+-- Table structure for table `season_user`
 --
+
+DROP TABLE IF EXISTS `season_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `season_user` (
+  `id` bigint(20) NOT NULL,
+  `feesPaid` bit(1) DEFAULT NULL,
+  `isActive` bit(1) DEFAULT NULL,
+  `positionRole` varchar(255) DEFAULT NULL,
+  `season_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_seasonuser_season` (`season_id`),
+  KEY `FK_seasonuser_user` (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `season_user`
+--
+
+LOCK TABLES `season_user` WRITE;
+/*!40000 ALTER TABLE `season_user` DISABLE KEYS */;
+INSERT INTO `season_user` VALUES (9, 1, 0,'Schriftführer',50001,10000);
+/*!40000 ALTER TABLE `season_user` ENABLE KEYS */;
+UNLOCK TABLES;
 
