@@ -109,7 +109,10 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES (20000,'Forellen','Anangeln','ANA'),(20001,'Zander','Gemeinschaftsangeln','GEA'),(20002,'Saiblinge','Abangeln','ABA');
+INSERT INTO `event` VALUES (20000,'Forellen','Anangeln','ANA');
+INSERT INTO `event` VALUES (20001,'Saiblinge','Abangeln','ABA');
+INSERT INTO `event` VALUES (20002,'Arbeiten','Arbeitsdienst-1','AD1');
+INSERT INTO `event` VALUES (20003,'Malochen','Arbeitsdienst-2','AD2');
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,3 +179,40 @@ INSERT INTO `season_user` VALUES (8003, 1, 0,null ,50001,10003);
 /*!40000 ALTER TABLE `season_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
+--
+-- Table structure for table `season_event`
+--
+
+DROP TABLE IF EXISTS `season_event`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `season_event` (
+  `id` bigint(20) NOT NULL,
+  `comments` varchar(255) DEFAULT NULL,
+  `endingDate` date DEFAULT NULL,
+  `endingTime` time DEFAULT NULL,
+  `finished` bit(1) DEFAULT NULL,
+  `meetingPoint` varchar(255) DEFAULT NULL,
+  `startingDate` date DEFAULT NULL,
+  `startingTime` time DEFAULT NULL,
+  `event_id` bigint(20) NOT NULL,
+  `season_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKopkex7dv6veocsaty63mngv4c` (`event_id`),
+  KEY `FK1noji8frqemtsavxlpppsar65` (`season_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `season_event`
+--
+
+LOCK TABLES `season_event` WRITE;
+/*!40000 ALTER TABLE `season_event` DISABLE KEYS */;
+INSERT INTO `season_event` VALUES (3000,'No comment','2021-06-14','12:00:00',_binary '\0',NULL,'2021-06-14','08:00:00',20000,50001);
+INSERT INTO `season_event` VALUES (3001,'No comment2','2021-06-20','15:00:00',_binary '\0',NULL,'2021-06-20','08:00:00',20000,50001);
+INSERT INTO `season_event` VALUES (3002,'No comment3','2021-06-27','12:00:00',_binary '\0',NULL,'2021-06-27','08:00:00',20000,50001);
+INSERT INTO `season_event` VALUES (3003,'No comment4','2021-07-17','15:00:00',_binary '\0',NULL,'2021-07-17','08:00:00',20000,50001);
+/*!40000 ALTER TABLE `season_event` ENABLE KEYS */;
+UNLOCK TABLES;

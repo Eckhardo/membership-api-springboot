@@ -3,12 +3,14 @@
  */
 package com.eki.membership.dao;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertFalse;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,7 +46,7 @@ public class SeasonUserRepositoryTest extends AbstractRepositoryTest<SeasonUser,
 		// when
 	
 		// then
-		assertThat(seasonUsers.size()).isEqualTo(4);
+	Assertions.assertEquals(seasonUsers.size(), 4);
 
 	}
 
@@ -52,9 +54,9 @@ public class SeasonUserRepositoryTest extends AbstractRepositoryTest<SeasonUser,
 	protected SeasonUser createNewEntity() {
 
 		List<User> users = userRepo.findAll();
-		assertFalse(users.isEmpty());
+		Assertions.assertFalse(users.isEmpty());
 		List<Season> seasons = seasonRepo.findAll();
-		assertFalse(seasons.isEmpty());
+		Assertions.assertFalse(seasons.isEmpty());
 		return EntityFactory.createSeasonUser(users.get(0), seasons.get(0));
 	}
 

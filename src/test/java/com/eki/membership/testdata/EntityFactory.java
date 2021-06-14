@@ -4,11 +4,14 @@
 package com.eki.membership.testdata;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import com.eki.membership.persistence.model.Event;
 import com.eki.membership.persistence.model.Event.EventBuilder;
 import com.eki.membership.persistence.model.Season;
 import com.eki.membership.persistence.model.Season.SeasonBuilder;
+import com.eki.membership.persistence.model.SeasonEvent;
+import com.eki.membership.persistence.model.SeasonEvent.SeasonEventBuilder;
 import com.eki.membership.persistence.model.SeasonUser;
 import com.eki.membership.persistence.model.SeasonUser.SeasonUserBuilder;
 import com.eki.membership.persistence.model.User;
@@ -35,7 +38,7 @@ public class EntityFactory {
 	public static Event createEvent() {
 
 		EventBuilder builder = new Event.EventBuilder();
-		builder.setEventName("Arbeitsdienst 1").setComment("Im Frühjahr").setEventShort("AD1");
+		builder.setEventName("Arbeitsdienst 3").setComment("ImHerbst").setEventShort("AD3");
 
 		return builder.build();
 
@@ -52,5 +55,13 @@ public class EntityFactory {
 		builder.setIsActive(true).setIsFeesPaid(true).setPositionRole("Schriftführer").setUser(user).setSeason(season);
 		;
 		return builder.build();
+	}
+
+	public static SeasonEvent createSeasonEvent(Event event, Season season) {
+	SeasonEventBuilder builder =new SeasonEvent.SeasonEventBuilder();
+	builder.setEvent(event).setSeason(season).setFinished(false).setComments("No comment")
+	.setStarting_date(LocalDate.now()).setEnding_date(LocalDate.now())
+	.setStarting_time(LocalTime.of(8, 0)).setEnding_time(LocalTime.of(12, 0));
+	return builder.build();
 	}
 }
