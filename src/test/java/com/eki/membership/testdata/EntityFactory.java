@@ -3,6 +3,8 @@
  */
 package com.eki.membership.testdata;
 
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -26,7 +28,7 @@ public class EntityFactory {
 	public static User createUser() {
 
 		UserBuilder builder = new User.UserBuilder();
-		builder.setUserName("Otto").setFirstName("Otto").setLastName("Bismarck").setCity("Hamburg")
+		builder.setUserName( randomAlphabetic(8)).setFirstName("Otto").setLastName("Bismarck").setCity("Hamburg")
 				.setAddress("Luruper Weg 4");
 		builder.setZip(20257).setAdmissionYear(2021).setAdmissionDate(LocalDate.now()).setMobil("0156234234");
 		builder.setPhone("040 4913656").setEmail("otto@gmx.de").setIsActive(true).setIsAdmin(false);

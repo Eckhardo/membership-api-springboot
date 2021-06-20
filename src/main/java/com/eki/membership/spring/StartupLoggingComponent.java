@@ -1,4 +1,4 @@
-package com.eki.membership.service;
+package com.eki.membership.spring;
 
 import java.util.Arrays;
 import java.util.List;

@@ -46,20 +46,21 @@ DROP TABLE IF EXISTS `user`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `user` (
   `id` bigint(20) NOT NULL,
-  `address` varchar(255) NOT NULL,
+  `address` varchar(50) NOT NULL,
   `admissionDate` date DEFAULT NULL,
   `admissionYear` int(11) NOT NULL,
-  `city` varchar(255) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
+  `city` varchar(20) NOT NULL,
+  `email` varchar(30) DEFAULT NULL,
   `firstName` varchar(30) NOT NULL,
   `isActive` bit(1) DEFAULT NULL,
   `isAdmin` bit(1) DEFAULT NULL,
   `lastName` varchar(50) NOT NULL,
-  `mobil` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `userName` varchar(255) NOT NULL,
+  `mobil` varchar(30) DEFAULT NULL,
+  `phone` varchar(30) DEFAULT NULL,
+  `userName` varchar(10) NOT NULL,
   `zip` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+    UNIQUE KEY `UK_user_name` (`userName`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -96,10 +97,11 @@ DROP TABLE IF EXISTS `event`;
 CREATE TABLE `event` (
   `id` bigint(20) NOT NULL,
   `comments` varchar(255) DEFAULT NULL,
-  `eventName` varchar(255) NOT NULL,
+  `eventName` varchar(20) NOT NULL,
   `eventShort` varchar(3) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_event_short` (`eventShort`)
+  UNIQUE KEY `UK_event_short` (`eventShort`),
+   UNIQUE KEY `UK_event_name` (`eventName`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -128,9 +130,11 @@ CREATE TABLE `season` (
   `id` bigint(20) NOT NULL,
   `isActive` bit(1) DEFAULT NULL,
   `seasonDate` date DEFAULT NULL,
-  `seasonName` varchar(255) NOT NULL,
+  `seasonName` varchar(15) NOT NULL,
   `seasonYear` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+   UNIQUE KEY `UK_season_name` (`seasonName`),
+  UNIQUE KEY `UK_season_year` (`seasonYear`) 
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -157,7 +161,7 @@ CREATE TABLE `season_user` (
   `id` bigint(20) NOT NULL,
   `feesPaid` bit(1) DEFAULT NULL,
   `isActive` bit(1) DEFAULT NULL,
-  `positionRole` varchar(255) DEFAULT NULL,
+  `positionRole` varchar(20) DEFAULT NULL,
   `season_id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
@@ -193,7 +197,7 @@ CREATE TABLE `season_event` (
   `endingDate` date DEFAULT NULL,
   `endingTime` time DEFAULT NULL,
   `finished` bit(1) DEFAULT NULL,
-  `meetingPoint` varchar(255) DEFAULT NULL,
+  `meetingPoint` varchar(20) DEFAULT NULL,
   `startingDate` date DEFAULT NULL,
   `startingTime` time DEFAULT NULL,
   `event_id` bigint(20) NOT NULL,

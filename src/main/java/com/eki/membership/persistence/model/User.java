@@ -35,39 +35,46 @@ public class User implements IEntity, IDto {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(unique = true, nullable = false)
+	@Column(unique = true)
+	@Size(min = 2, max = 10)
+	@NotNull
 	private String userName;
 
-	@Column(unique = false, nullable = false)
-	@Size(min = 2, max = 30)
+	@Column()
+	@Size(min = 2, max = 10)
 	@NotNull
 	private String firstName;
 
-	@Column(unique = false, nullable = false)
-	@Size(min = 2, max = 50)
+	@Column()
+	@Size(min = 2, max = 10)
 	@NotNull
 	private String lastName;
 
-	@Column(unique = false, nullable = false)
+	@Column()
 	@NotNull
+	@Size(min = 2, max = 30)
 	private String city;
 
-	@Column(unique = false, nullable = false)
+	@Column()
 	@NotNull
+	@Size(min = 2, max = 30)
 	private String address;
 
-	@Column(unique = false, nullable = false)
+	@Column()
 	@NotNull
 	private int zip;
 
 	@Column()
+	@Size(min = 2, max = 30)
 	private String mobil;
 
 	@Column()
+	@Size(min = 2, max = 30)
 	private String phone;
 
 	@Email(message = "{user.email.invalid}")
 	@NotEmpty(message = "Please enter email")
+	@Size(min = 2, max = 30)
 	private String email;
 
 	@Column()
@@ -90,7 +97,7 @@ public class User implements IEntity, IDto {
 	public User(String user_name, @Size(min = 2, max = 30) @NotNull String first_name,
 			@Size(min = 2, max = 50) @NotNull String last_name, @NotNull String city, @NotNull String address,
 			@NotNull int zip, String mobil, String phone,
-			@Email(message = "{user.email.invalid}") @NotEmpty(message = "Please enter email") String email,
+			String email,
 			@NotNull int admission_year, LocalDate admission_date, boolean is_active, boolean is_admin) {
 		super();
 

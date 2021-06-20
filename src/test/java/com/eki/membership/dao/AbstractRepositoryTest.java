@@ -13,8 +13,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.eki.membership.persistence.interfaces.IEntity;
-import com.eki.membership.service.StartupLoggingComponent;
 import com.eki.membership.spring.MembershipPersistenceJpaConfig;
+import com.eki.membership.spring.StartupLoggingComponent;
 
 /**
  * @author eckhard kirschning

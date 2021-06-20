@@ -34,10 +34,11 @@ public class Event implements IEntity, IDto {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(unique = true, nullable = false)
+	@Column(unique = true)
+	@Size(min = 2, max = 10)
 	private String eventName;
 
-	@Column(unique = true, nullable = false, length = 3)
+	@Column(unique = true)
 	@Size(min = 2, max = 3)
 	private String eventShort;
 

@@ -1,4 +1,4 @@
-package com.eki.membership.service.interfaces;
+package com.eki.membership.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,13 +15,20 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.eki.membership.exception.MyEntityNotFoundException;
+import com.eki.membership.persistence.interfaces.IWithId;
+import com.eki.membership.service.interfaces.IService;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
-import com.eki.membership.exception.MyEntityNotFoundException;
-import com.eki.membership.persistence.interfaces.IWithName;
+
+/**
+ * @author eckhard kirschning
+ *
+ */
+
 
 @Transactional
-public abstract class AbstractService<T extends IWithName> implements IService<T> {
+public abstract class AbstractService<T extends IWithId> implements IService<T> {
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
@@ -31,7 +38,6 @@ public abstract class AbstractService<T extends IWithName> implements IService<T
 		super();
 	}
 
-	// API
 
 	// find - one
 
@@ -106,6 +112,7 @@ public abstract class AbstractService<T extends IWithName> implements IService<T
 	@Override
 	public void update(final T entity) {
 		Preconditions.checkNotNull(entity);
+		logger.info(entity.toString());
 		getDao().save(entity);
 	}
 
@@ -133,14 +140,6 @@ public abstract class AbstractService<T extends IWithName> implements IService<T
 		return getDao().count();
 	}
 
-	// template method
-
-	protected abstract PagingAndSortingRepository<T, Long> getDao();
-
-	protected abstract JpaSpecificationExecutor<T> getSpecificationExecutor();
-
-	// template
-
 	protected final Sort constructSort(final String sortBy, final String sortOrder) {
 		Sort sortInfo = Sort.unsorted();
 		if (sortBy != null) {
@@ -148,5 +147,13 @@ public abstract class AbstractService<T extends IWithName> implements IService<T
 		}
 		return sortInfo;
 	}
+
+	
+	// abstract methods
+
+	protected abstract PagingAndSortingRepository<T, Long> getDao();
+
+	protected abstract JpaSpecificationExecutor<T> getSpecificationExecutor();
+
 
 }

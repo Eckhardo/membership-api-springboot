@@ -26,7 +26,7 @@ public class UserRepositoryTest extends AbstractRepositoryTest<User, Long> {
 	@Test
 	public void whenFindByUserName_thenReturnUser() {
 		User newUser = createNewEntity();
-		newUser.setFirstName("Adolf");
+		newUser.setFirstName(null);
 
 		// given
 		getApi().save(newUser);

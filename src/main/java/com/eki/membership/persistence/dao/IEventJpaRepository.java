@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.eki.membership.persistence.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,6 +13,7 @@ import com.eki.membership.persistence.model.User;
  *
  */
 public interface IEventJpaRepository
-		extends JpaRepository<Event, Long>, JpaSpecificationExecutor<User>, IByIdApi<Event> {
+		extends JpaRepository<Event, Long>, JpaSpecificationExecutor<Event>, IByIdApi<Event> {
+	
 	Event findByEventName(String eventName);
 }

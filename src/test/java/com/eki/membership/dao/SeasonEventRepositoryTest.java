@@ -1,8 +1,8 @@
 package com.eki.membership.dao;
 
-import org.junit.jupiter.api.Assertions;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

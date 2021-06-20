@@ -1,6 +1,8 @@
 package com.eki.membership.persistence.interfaces;
 
-public interface IWithId {
+import java.io.Serializable;
+
+public interface IWithId extends Serializable{
 
 	Long getId();
 

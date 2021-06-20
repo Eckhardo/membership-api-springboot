@@ -15,7 +15,7 @@ import com.eki.membership.persistence.model.User;
  *
  */
 public interface ISeasonJpaRepository
-		extends JpaRepository<Season, Long>, JpaSpecificationExecutor<User>, IByIdApi<Season> {
+		extends JpaRepository<Season, Long>, JpaSpecificationExecutor<Season>, IByIdApi<Season> {
 
 	Season findBySeasonName(String seasonName);
 

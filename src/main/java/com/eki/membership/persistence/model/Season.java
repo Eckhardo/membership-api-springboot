@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.eki.membership.persistence.interfaces.IDto;
 import com.eki.membership.persistence.interfaces.IEntity;
@@ -35,14 +36,15 @@ public class Season implements IEntity, IDto {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(unique = true, nullable = false)
+	@Column(unique = true)
+	@Size(min = 2, max = 10)
 	private String seasonName;
 
 	@Column()
 	private boolean isActive;
 
 	@Column()
-	@NotNull
+	@Size(min= 4, max=4)
 	private int seasonYear;
 
 	@Column()
